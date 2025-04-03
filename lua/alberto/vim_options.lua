@@ -29,3 +29,5 @@ vim.opt.splitbelow = true -- new hsplt goes to the bottom
 
 vim.opt.number = true
 
+vim.opt.colorcolumn = "120"
+vim.opt.textwidth = 120

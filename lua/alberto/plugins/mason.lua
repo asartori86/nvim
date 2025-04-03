@@ -29,6 +29,7 @@ return {
             local lspconfig = require('lspconfig')
 
             lspconfig.lua_ls.setup({})
+            lspconfig.jsonnet_ls.setup({})
             lspconfig.bashls.setup({})
             -- lspconfig.rust_analyzer.setup({})
             lspconfig.clangd.setup({})
