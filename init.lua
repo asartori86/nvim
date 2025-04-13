@@ -55,6 +55,7 @@ require("lazy").setup({
 	-- require("plugins.lspsaga"),
 	require("plugins.linting"),
 	require("plugins.actions-preview"),
+	require("plugins.trouble"),
 }, {
 	checker = { enabled = false }, -- disable check for plugin updates
 	change_detection = { enabled = false }, -- disable check for config file changes, just restart neovim
