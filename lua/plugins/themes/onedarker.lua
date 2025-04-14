@@ -1,0 +1,1 @@
+return { "AlphaTechnolog/onedarker.nvim" }

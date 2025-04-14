@@ -28,19 +28,20 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
 require("lazy").setup({
-	require("plugins.themes.onedark"),
+	-- require("plugins.themes.onedark"),
+	require("plugins.themes.kanagawa"),
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	-- require("plugins.lsp"),
 	require("plugins.lsp-kickstart"),
 	-- require("plugins.autocompletion"),
-	-- require("plugins.none-ls"),
+	require("plugins.none-ls"),
 	require("plugins.lualine"),
 	-- require("plugins.bufferline"),
 	require("plugins.neo-tree"),
 	require("plugins.alpha"), -- start screen
 	require("plugins.indent-blankline"),
-	-- require("plugins.lazygit"),
+	require("plugins.lazygit"),
 	require("plugins.comment"),
 	-- require("plugins.debug"),
 	require("plugins.gitsigns"),
@@ -53,9 +54,10 @@ require("lazy").setup({
 	require("plugins.vim-tmux-navigator"),
 	require("plugins.dropbar"),
 	-- require("plugins.lspsaga"),
-	require("plugins.linting"),
+	-- require("plugins.linting"),
 	require("plugins.actions-preview"),
 	require("plugins.trouble"),
+	require("plugins.barbar"),
 }, {
 	checker = { enabled = false }, -- disable check for plugin updates
 	change_detection = { enabled = false }, -- disable check for config file changes, just restart neovim
