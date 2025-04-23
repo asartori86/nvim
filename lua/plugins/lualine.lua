@@ -36,14 +36,14 @@ return {
       },
     }
 
-    -- Import color theme based on environment variable NVIM_THEME
-    local env_var_nvim_theme = os.getenv 'NVIM_THEME' or 'nord'
-
-    -- Define a table of themes
-    local themes = {
-      onedark = onedark_theme,
-      nord = 'nord',
-    }
+    -- -- Import color theme based on environment variable NVIM_THEME
+    -- local env_var_nvim_theme = os.getenv 'NVIM_THEME' or 'nord'
+    --
+    -- -- Define a table of themes
+    -- local themes = {
+    --   onedark = onedark_theme,
+    --   nord = 'nord',
+    -- }
 
     local mode = {
       'mode',
@@ -84,7 +84,7 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = themes[env_var_nvim_theme], -- Set theme based on environment variable
+        theme = 'gruvbox-material', --themes[env_var_nvim_theme], -- Set theme based on environment variable
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

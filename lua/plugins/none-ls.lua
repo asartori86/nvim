@@ -21,6 +21,8 @@ return {
 				"ruff",
 				"golangci-lint",
 				"gofumpt",
+				"jsonnetfmt",
+				"clang-format",
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -29,11 +31,12 @@ return {
 		local sources = {
 			diagnostics.checkmake,
 			diagnostics.golangci_lint,
-			formatting.prettier.with({ filetypes = { "html", "json", "yaml", "markdown" } }),
+			formatting.prettier.with({ filetypes = { "html", "yaml", "markdown" } }),
 			formatting.stylua,
-			formatting.shfmt.with({ args = { "-i", "4" } }),
+			formatting.shfmt.with({ args = { "-i", "2" } }),
 			formatting.terraform_fmt,
 			formatting.gofumpt,
+			formatting.clang_format,
 			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
 			-- require("none-ls.formatting.ruff_format"),
 		}

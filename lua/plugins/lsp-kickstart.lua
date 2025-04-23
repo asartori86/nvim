@@ -217,7 +217,10 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = {},
+				clangd = {
+					cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+				},
+				jsonnet_ls = {},
 				gopls = {
 					settings = {
 						gopls = {
@@ -256,7 +259,55 @@ return {
 						},
 					},
 				},
-				basedpyright = {},
+				-- basedpyright = {},
+				-- pylsp = {},
+				-- pylsp = {
+				-- 	settings = {
+				-- 		pylsp = {
+				-- 			plugins = {
+				-- 				pyflakes = { enabled = false },
+				-- 				pycodestyle = { enabled = false },
+				-- 				autopep8 = { enabled = false },
+				-- 				yapf = { enabled = false },
+				-- 				mccabe = { enabled = false },
+				-- 				pylsp_mypy = { enabled = false },
+				-- 				pylsp_black = { enabled = false },
+				-- 				pylsp_isort = { enabled = false },
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
+				ruff = {
+					-- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
+					-- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
+					commands = {
+						RuffAutofix = {
+							function()
+								local bufnr = vim.api.nvim_get_current_buf()
+								vim.lsp.buf.execute_command({
+									command = "ruff.applyAutofix",
+									arguments = {
+										{ uri = vim.uri_from_bufnr(bufnr), version = vim.lsp.util.buf_versions[bufnr] },
+									},
+								})
+							end,
+							description = "Ruff: Fix all auto-fixable problems",
+						},
+						RuffOrganizeImports = {
+							function()
+								local bufnr = vim.api.nvim_get_current_buf()
+								vim.lsp.buf.execute_command({
+									command = "ruff.applyOrganizeImports",
+									arguments = {
+										{ uri = vim.uri_from_bufnr(bufnr), version = vim.lsp.util.buf_versions[bufnr] },
+									},
+								})
+							end,
+							description = "Ruff: Format imports",
+						},
+					},
+				},
+				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -336,48 +387,6 @@ return {
 			})
 		end,
 	},
-
-	-- { -- Autoformat
-	-- 	"stevearc/conform.nvim",
-	-- 	event = { "BufWritePre" },
-	-- 	cmd = { "ConformInfo" },
-	-- 	keys = {
-	-- 		{
-	-- 			"<leader>f",
-	-- 			function()
-	-- 				require("conform").format({ async = true, lsp_format = "fallback" })
-	-- 			end,
-	-- 			mode = "",
-	-- 			desc = "[F]ormat buffer",
-	-- 		},
-	-- 	},
-	-- 	opts = {
-	-- 		notify_on_error = false,
-	-- 		format_on_save = function(bufnr)
-	-- 			-- Disable "format_on_save lsp_fallback" for languages that don't
-	-- 			-- have a well standardized coding style. You can add additional
-	-- 			-- languages here or re-enable it for the disabled ones.
-	-- 			local disable_filetypes = { c = true, cpp = true }
-	-- 			if disable_filetypes[vim.bo[bufnr].filetype] then
-	-- 				return nil
-	-- 			else
-	-- 				return {
-	-- 					timeout_ms = 500,
-	-- 					lsp_format = "fallback",
-	-- 				}
-	-- 			end
-	-- 		end,
-	-- 		formatters_by_ft = {
-	-- 			lua = { "stylua" },
-	-- 			-- Conform can also run multiple formatters sequentially
-	-- 			python = { "isort", "black", "ruff" },
-	-- 			go = { "gofumpt" },
-	-- 			--
-	-- 			-- You can use 'stop_after_first' to run the first available formatter from the list
-	-- 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
-	-- 		},
-	-- 	},
-	-- },
 
 	{ -- Autocompletion
 		"saghen/blink.cmp",
@@ -474,26 +483,4 @@ return {
 			signature = { enabled = true },
 		},
 	},
-
-	-- { -- You can easily change to a different colorscheme.
-	--   -- Change the name of the colorscheme plugin below, and then
-	--   -- change the command in the config to whatever the name of that colorscheme is.
-	--   --
-	--   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-	--   "folke/tokyonight.nvim",
-	--   priority = 1000, -- Make sure to load this before all the other start plugins.
-	--   config = function()
-	--     ---@diagnostic disable-next-line: missing-fields
-	--     require("tokyonight").setup({
-	--       styles = {
-	--         comments = { italic = false }, -- Disable italics in comments
-	--       },
-	--     })
-	--
-	--     -- Load the colorscheme here.
-	--     -- Like many other themes, this one has different styles, and you could load
-	--     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-	--     vim.cmd.colorscheme("tokyonight-night")
-	--   end,
-	-- },
 }
