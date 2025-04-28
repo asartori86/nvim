@@ -23,13 +23,13 @@ return {
 			dashboard.button("b", "  Browse files", ":Telescope file_browser <CR>"),
 			dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 			-- dashboard.button("r", "📂  Recent files", ":Telescope oldfiles <CR>"),
-			dashboard.button("g", "󱎸  Find text", ":Telescope live_grep <CR>"),
-			-- dashboard.button("s", "⚙  Settings", ":e ~/.config/nvim/init.lua <CR>"),
+			dashboard.button("g", "󱎸  Grep text", ":Telescope live_grep <CR>"),
 			-- dashboard.button("p", "📂  Projects", ":Telescope projects <CR>"),
 			-- dashboard.button("u", "🔄  Update plugins", ":Lazy update<CR>"),
 		}
 		dashboard.section.mru.val = { { type = "padding", val = 0 } }
 		dashboard.section.bottom_buttons.val = {
+			dashboard.button("s", "⚙  Settings", ":e ~/.config/nvim/init.lua <CR>"),
 			-- Open Lazy
 			dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
 			-- Open Mason

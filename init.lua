@@ -55,7 +55,7 @@ require("lazy").setup({
   -- require 'plugins.database',
   require("plugins.misc"),
   -- require("plugins.harpoon"),
-  require("plugins.avante"),
+  -- require("plugins.avante"),
   -- require 'plugins.chatgpt',
   require("plugins.aerial"), -- code outline
   -- require("plugins.vim-tmux-navigator"),
@@ -65,10 +65,13 @@ require("lazy").setup({
   require("plugins.actions-preview"),
   require("plugins.trouble"),
   require("plugins.barbar"),
-  -- require("plugins.codecompanion"),
+  require("plugins.codecompanion"),
   require("plugins.glance"),
+  require("plugins.leap"),
+  -- require("plugins.sniprun"),
+  require("plugins.neorg"),
 }, {
-  checker = { enabled = false },         -- disable check for plugin updates
+  checker = { enabled = false },          -- disable check for plugin updates
   change_detection = { enabled = false }, -- disable check for config file changes, just restart neovim
   -- ui = {
   -- 	-- If you have a Nerd Font, set icons to an empty table which will use the
