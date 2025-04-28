@@ -34,6 +34,11 @@ return {
 			dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
 			-- Open Mason
 			dashboard.button("m", "󰫺  Mason", ":Mason<CR>"),
+			-- open neorg index
+			dashboard.button("n", "󱞁 Neorg", ":Neorg index<CR>"),
+			-- open neorg gtd workspace with a nice todo icon
+			dashboard.button("t", " GTD", ":Neorg workspace gtd<CR>"),
+
 			dashboard.button("q", "󰩈  Quit Neovim", ":qa!<CR>"),
 		}
 
