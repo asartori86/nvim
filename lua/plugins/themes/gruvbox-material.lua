@@ -1,6 +1,6 @@
 return {
-	-- "sainnhe/gruvbox-material",
-	dir = "/home/sartori/opt/src/gruvbox-material",
+	"sainnhe/gruvbox-material",
+	-- dir = "/home/sartori/opt/src/gruvbox-material",
 	lazy = false,
 	priority = 1000,
 	config = function()
