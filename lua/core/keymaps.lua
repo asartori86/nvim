@@ -2,7 +2,7 @@
 
 -- Set leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- vim.g.maplocalleader = "\\"
 
 -- For conciseness
 local opts = { noremap = true, silent = true }
